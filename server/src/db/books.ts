@@ -26,6 +26,6 @@ export const BooksModel = mongoose.model('Books', BooksSchema);
 export const getBooks = () => BooksModel.find();
 export const getBooksByEmail = (email: string) => BooksModel.findOne({ email });
 export const getBooksById = (id: string) => BooksModel.findById(id);
-export const createBooks = (values: Record<string, any>) => new BooksModel(values).save().then((Books) => Books.toObject());
+export const saveBooks = (values: Record<string, any>) => new BooksModel(values).save().then((Books) => Books.toObject());
 export const deleteBooksById = (id: string) => BooksModel.findOneAndDelete({ _id: id });
 export const updateBooksById = (id: string, values: Record<string, any>) => BooksModel.findByIdAndUpdate(id, values);
