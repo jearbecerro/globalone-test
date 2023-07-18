@@ -8,7 +8,7 @@ export const getSaveBooks = async (req: express.Request, res: express.Response) 
         const saveBooks = await getBooksById(id);
         return res.sendStatus(200).json(saveBooks);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 };
@@ -20,7 +20,7 @@ export const saveBook = async (req: express.Request, res: express.Response) => {
 
         return res.json(saveBooks);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 }
@@ -33,7 +33,7 @@ export const deleteBook = async (req: express.Request, res: express.Response) =>
 
         return res.json(deletedUser);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 }

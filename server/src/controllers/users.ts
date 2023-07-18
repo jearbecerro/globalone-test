@@ -7,7 +7,7 @@ export const getAllUsers = async (req: express.Request, res: express.Response) =
 
         return res.status(200).json(users);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 };
@@ -20,7 +20,7 @@ export const deleteUser = async (req: express.Request, res: express.Response) =>
 
         return res.json(deletedUser);
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 }
@@ -34,7 +34,7 @@ export const updateUser = async (req: express.Request, res: express.Response) =>
 
         return res.status(200).json(user).end();
     } catch (error) {
-        console.log(error);
+        console.log(error.message);
         return res.sendStatus(400);
     }
 }
