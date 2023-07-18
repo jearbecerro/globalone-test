@@ -7,6 +7,7 @@ import cors from 'cors';
 import { load } from 'ts-dotenv';
 import mongoose from 'mongoose';
 
+import router from './router';
 //set env
 const env = load({
     MONGO_URL: String,
@@ -32,3 +33,5 @@ const MONGO_URL: string = env.MONGO_URL;
 mongoose.Promise = Promise;
 mongoose.connect(MONGO_URL);
 mongoose.connection.on('error', (error: Error) => console.log(error));
+
+app.use('/api/v1', router());

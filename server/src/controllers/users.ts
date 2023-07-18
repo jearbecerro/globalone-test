@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUserById, getUserById, getUsers, updateUserById } from "db/users";
+import { deleteUserById, getUserById, getUsers, updateUserById } from "../db/users";
 
 export const getUser = async (req: express.Request, res: express.Response) => {
     try {

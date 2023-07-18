@@ -1,5 +1,5 @@
 import express from 'express';
-import { verifyUserSessionToken } from 'helpers';
+import { verifyUserSessionToken } from '../helpers';
 import { merge } from 'lodash';
 
 export const isAuthenticated = async (req: express.Request, res: express.Response, next: express.NextFunction ) => {

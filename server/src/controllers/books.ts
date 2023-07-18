@@ -1,6 +1,6 @@
 import express from "express";
 
-import { getBooksById, saveBooks, deleteBooksById } from "db/books";
+import { getBooksById, saveBooks, deleteBooksById } from "../db/books";
 
 export const getSaveBooks = async (req: express.Request, res: express.Response) => {
     try {

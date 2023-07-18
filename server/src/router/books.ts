@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { isAuthenticated } from '../middlewares';
-import { deleteBook, getSaveBooks, saveBook } from 'controllers/books';
+import { deleteBook, getSaveBooks, saveBook } from '../controllers/books';
 
 export default (router: express.Router) => {
   router.get('/books/:id', isAuthenticated, getSaveBooks);

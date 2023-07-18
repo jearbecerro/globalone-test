@@ -1,8 +1,8 @@
 import express from 'express';
 
-import authentication from './authentication';
 import users from './users';
 import books from './books';
+import authentication from './authentication';
 
 const router = express.Router();
 

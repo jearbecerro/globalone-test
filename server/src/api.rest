@@ -1,0 +1,19 @@
+### Registration
+POST http://localhost:8080/api/v1/auth/register
+Content-Type: application/json
+
+{
+    "email": "jearbecerros@gmail.com",
+    "username": "jearbecerro",
+    "password": "123",
+    "name": "Je Ar Becerro"
+}
+
+### Login
+POST http://localhost:8080/api/v1/auth/login
+Content-Type: application/json
+
+{
+    "email": "jearbecerro@gmail.com",
+    "password": "123"
+}

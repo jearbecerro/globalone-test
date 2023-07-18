@@ -1,31 +1,39 @@
 import express from 'express';
-import { genSaltSync, hashSync, compareSync } from "bcrypt-ts";
-import { createUser, getUserByEmail } from 'db/users';
+import bcrypt from 'bcrypt';
+
+import { getUserByEmail, createUser } from '../db/users';
+import { createUserSessionToken } from '../helpers';
+
 
 export const login = async (req: express.Request, res: express.Response) => {
     try {
         const { email, password } = req.body;
-        if(!email || !password){
-            return res.status(400);
-        }
 
-        const user = await getUserByEmail(email);
-        if(!user){
+        if (!email || !password) {
             return res.sendStatus(400);
         }
 
-        //compare password to hash and save password
-        const correctPassword = compareSync(password, user.password);
-        if(!correctPassword){
-            return res.sendStatus(202).json({ message: "incorrect password" });
+        const user = await getUserByEmail(email);
+
+        if (!user) {
+            return res.sendStatus(400);
         }
 
+        const correctPassword = await bcrypt.compare(password, user.password);
 
+        if(!correctPassword){
+            return res.sendStatus(400).json({ message: "incorrect password" });
+        }
+
+        const expireseIn = "8h";
+        const authToken = createUserSessionToken(user, expireseIn);
+
+        return res.status(200).json({ authToken: authToken })
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return res.sendStatus(400);
     }
-}
+};
 
 export const register = async (req: express.Request, res: express.Response) => {
     try {
@@ -38,11 +46,11 @@ export const register = async (req: express.Request, res: express.Response) => {
         const existingUser = await getUserByEmail(email);
 
         if (existingUser) {
-            return res.sendStatus(202).json({ message: "email is not available" });
+            return res.sendStatus(400).json({ message: "email is already use" });
         }
 
-        const salt = genSaltSync(10);
-        const hashPassword = hashSync(password, salt);
+        const salt = bcrypt.genSaltSync(10);
+        const hashPassword = bcrypt.hashSync(password, salt);
         const user = await createUser({
             email,
             username,
@@ -52,7 +60,7 @@ export const register = async (req: express.Request, res: express.Response) => {
 
         return res.status(200).json(user).end();
     } catch (error) {
-        console.log(error.message);
+        console.log(error);
         return res.sendStatus(400);
     }
 }
