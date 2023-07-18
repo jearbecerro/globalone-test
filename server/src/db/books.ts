@@ -3,7 +3,8 @@
  */
 import mongoose from 'mongoose';
 
-// Books Config
+// Books Config 
+//Schema base on response of https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json
 const BooksSchema = new mongoose.Schema({
     title: { type: String, required: true },
     description: { type: String, required: true },
