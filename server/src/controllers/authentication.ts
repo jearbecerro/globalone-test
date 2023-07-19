@@ -22,7 +22,7 @@ export const login = async (req: express.Request, res: express.Response) => {
         const correctPassword = await bcrypt.compare(password, user.password);
 
         if(!correctPassword){
-            return res.sendStatus(400).json({ message: "incorrect password" });
+            return res.status(400).json({ message: "incorrect password" });
         }
 
         const expireseIn = "8h";
@@ -46,7 +46,7 @@ export const register = async (req: express.Request, res: express.Response) => {
         const existingUser = await getUserByEmail(email);
 
         if (existingUser) {
-            return res.sendStatus(400).json({ message: "email is already use" });
+            return res.status(400).json({ message: "email is already use" });
         }
 
         const salt = bcrypt.genSaltSync(10);

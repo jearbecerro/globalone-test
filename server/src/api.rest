@@ -17,3 +17,17 @@ Content-Type: application/json
     "email": "jearbecerro@gmail.com",
     "password": "123"
 }
+
+###
+GET http://localhost:8080/api/v1/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI2NGI2NGQ0MWVmYTdiMjY1YzQ1MjhiNzhcIixcImVtYWlsXCI6XCJqZWFyYmVjZXJyb0BnbWFpbC5jb21cIixcInVzZXJuYW1lXCI6XCJqZWFyYmVjZXJyb1wiLFwicGFzc3dvcmRcIjpcIiQyYiQxMCQ0aDRITFoyWklMbC9zRjVpVmlwdXRlb0tydkprWFd2UjJmMGs1RmtCQkM0ZjQzQVgzQ2lCZVwiLFwibmFtZVwiOlwiSmUgQXIgQmVjZXJyb1wiLFwiX192XCI6MH0iLCJpYXQiOjE2ODk2NzM1MTYsImV4cCI6MTY4OTcwMjMxNn0.ykZNOydo38Dr62Fer5syXzu95o2gJUSG-3r46qNY-HI
+
+### Search Book
+POST http://localhost:8080/api/v1/search-books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoie1wiX2lkXCI6XCI2NGI2NGQ0MWVmYTdiMjY1YzQ1MjhiNzhcIixcImVtYWlsXCI6XCJqZWFyYmVjZXJyb0BnbWFpbC5jb21cIixcInVzZXJuYW1lXCI6XCJqZWFyYmVjZXJyb1wiLFwicGFzc3dvcmRcIjpcIiQyYiQxMCQ0aDRITFoyWklMbC9zRjVpVmlwdXRlb0tydkprWFd2UjJmMGs1RmtCQkM0ZjQzQVgzQ2lCZVwiLFwibmFtZVwiOlwiSmUgQXIgQmVjZXJyb1wiLFwiX192XCI6MH0iLCJpYXQiOjE2ODk3MjgzMDcsImV4cCI6MTY4OTc1NzEwN30.HCiRr6W1_Rj3M9d7QhO2l5qgGUeC-wIbrTlna2gfUhs
+
+{
+    "searchBy": "title",
+    "value": "Batman"
+}

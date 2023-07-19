@@ -18,7 +18,7 @@ export const saveBook = async (req: express.Request, res: express.Response) => {
         const { values } = req.body;
         const save = await saveBooks(values);
 
-        return res.json(saveBooks);
+        return res.json(save);
     } catch (error) {
         console.log(error.message);
         return res.sendStatus(400);
